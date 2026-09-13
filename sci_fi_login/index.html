@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cyber Login</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="scene">
+
+        <!-- =================================
+             BACKGROUND VIDEO
+        ================================== -->
+
+        <video
+            class="background-video"
+            autoplay
+            muted
+            playsinline
+        >
+            <source src="./assets/background.mp4" type="video/mp4">
+
+            Your browser does not support HTML5 video.
+        </video>
+
+
+        <!-- =================================
+             SCREEN EFFECTS
+        ================================== -->
+
+        <div class="scanlines"></div>
+
+        <div class="particles" id="particles"></div>
+
+
+        <!-- =================================
+             LOGIN INTERFACE
+        ================================== -->
+
+        <section
+            class="login-panel"
+            id="loginPanel"
+            aria-label="Login panel"
+        >
+
+            <!-- Futuristic corners -->
+            <div class="corner c1"></div>
+            <div class="corner c2"></div>
+            <div class="corner c3"></div>
+            <div class="corner c4"></div>
+
+
+            <div class="panel-inner">
+
+                <!-- Login title -->
+                <h1>LOGIN</h1>
+
+
+                <!-- Login form -->
+                <form id="loginForm">
+
+
+                    <!-- Username -->
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <div class="field">
+
+                        <span class="icon">🔒</span>
+
+                        <input
+                            id="username"
+                            type="text"
+                            placeholder="Enter username"
+                            autocomplete="username"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Password -->
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="field">
+
+                        <input
+                            id="password"
+                            type="password"
+                            placeholder="Enter password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            class="eye"
+                            id="togglePassword"
+                            type="button"
+                            aria-label="Show password"
+                        >
+                            ◉
+                        </button>
+
+                    </div>
+
+
+                    <!-- Login button -->
+                    <button
+                        class="login-btn"
+                        type="submit"
+                    >
+                        <span>Login</span>
+                    </button>
+
+
+                    <!-- System status -->
+                    <p
+                        class="status"
+                        id="status"
+                        aria-live="polite"
+                    ></p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             HUD INFORMATION
+        ================================== -->
+
+        <div class="hud hud-left">
+            SYSTEM ONLINE
+        </div>
+
+        <div class="hud hud-right">
+            SECURE ACCESS // 01
+        </div>
+
+    </main>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

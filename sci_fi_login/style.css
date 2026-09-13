@@ -1,0 +1,688 @@
+/* =========================================================
+   CYBER LOGIN - FINAL CSS
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #020609;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #dfffff;
+}
+
+
+/* =========================================================
+   MAIN SCENE
+   ========================================================= */
+
+.scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   BACKGROUND VIDEO
+   ========================================================= */
+
+.background-video {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   OVERLAY
+   ========================================================= */
+
+.scene::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: transparent;
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SCANLINES
+   ========================================================= */
+
+.scanlines {
+    position: absolute;
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.012) 0px,
+            rgba(255, 255, 255, 0.012) 1px,
+            transparent 2px,
+            transparent 5px
+        );
+}
+
+
+/* =========================================================
+   PARTICLES
+   ========================================================= */
+
+.particles {
+    position: absolute;
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: #8ffaff;
+
+    box-shadow:
+        0 0 5px #00eaff,
+        0 0 10px #00eaff;
+
+    opacity: 0.45;
+
+    animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+
+    from {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.6;
+    }
+
+    85% {
+        opacity: 0.6;
+    }
+
+    to {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   REAL LOGIN INTERFACE
+   ========================================================= */
+
+.login-panel {
+
+    position: absolute;
+
+    /*
+       MOVED SLIGHTLY LEFT
+    */
+
+    left: 51.8%;
+    top: 28.2%;
+
+    width: 30.3%;
+    height: 43.5%;
+
+    padding: 0;
+
+    z-index: 20;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform: translateY(15px);
+
+    /*
+       DARKER BACKGROUND
+       This hides the original login graphics
+       underneath the real HTML interface.
+    */
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(4, 20, 27, 0.985),
+            rgba(2, 13, 19, 0.985)
+        );
+
+    border: none;
+
+    box-shadow:
+        inset 0 0 35px rgba(0, 220, 255, 0.045),
+        0 0 15px rgba(0, 180, 220, 0.08);
+
+    clip-path: polygon(
+        0 15px,
+        15px 0,
+        calc(100% - 15px) 0,
+        100% 15px,
+        100% calc(100% - 15px),
+        calc(100% - 15px) 100%,
+        15px 100%,
+        0 calc(100% - 15px)
+    );
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+
+/* =========================================================
+   PANEL ACTIVE
+   ========================================================= */
+
+.login-panel.visible {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   REMOVE EXTRA PANEL BORDER
+   ========================================================= */
+
+.login-panel::before {
+    display: none;
+}
+
+
+/* =========================================================
+   PANEL CONTENT
+   ========================================================= */
+
+.panel-inner {
+
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 0;
+}
+
+
+/* =========================================================
+   HIDE DUPLICATE LOGIN TITLE
+   ========================================================= */
+
+.login-panel h1 {
+    display: none;
+}
+
+
+/* =========================================================
+   LABELS
+   ========================================================= */
+
+.login-panel label {
+
+    position: absolute;
+
+    left: 7%;
+
+    display: block !important;
+
+    margin: 0;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.3px;
+
+    text-transform: none;
+
+    color: #d9fbff;
+
+    text-shadow:
+        0 0 6px rgba(100, 245, 255, 0.65);
+
+    z-index: 30;
+}
+
+
+/* Username label */
+
+.login-panel label[for="username"] {
+    top: 5%;
+}
+
+
+/* Password label */
+
+.login-panel label[for="password"] {
+    top: 35%;
+}
+
+
+/* =========================================================
+   INPUT FIELD CONTAINER
+   ========================================================= */
+
+.field {
+
+    position: absolute;
+
+    left: 7%;
+
+    width: 86%;
+
+    margin: 0;
+
+    z-index: 30;
+}
+
+
+/* Username */
+
+.field:has(#username) {
+    top: 12%;
+}
+
+
+/* Password */
+
+.field:has(#password) {
+    top: 42%;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.field input {
+
+    display: block !important;
+
+    width: 100% !important;
+
+    height: 43px !important;
+
+    padding: 0 42px 0 42px !important;
+
+    outline: none !important;
+
+    border: 1px solid rgba(165, 247, 255, 0.72) !important;
+
+    border-radius: 1px !important;
+
+    background:
+        rgba(3, 18, 24, 0.96) !important;
+
+    color: #efffff !important;
+
+    font-family: "Segoe UI", Arial, sans-serif !important;
+
+    font-size: 14px !important;
+
+    box-shadow:
+        0 0 5px rgba(0, 235, 255, 0.14),
+        inset 0 0 10px rgba(0, 235, 255, 0.04);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* Placeholder */
+
+.field input::placeholder {
+
+    color: rgba(210, 250, 255, 0.45) !important;
+}
+
+
+/* Focus */
+
+.field input:focus {
+
+    border-color: #cfffff !important;
+
+    background:
+        rgba(4, 27, 34, 0.98) !important;
+
+    box-shadow:
+        0 0 9px rgba(0, 235, 255, 0.42),
+        inset 0 0 10px rgba(0, 235, 255, 0.08);
+}
+
+
+/* =========================================================
+   LOCK ICON
+   ========================================================= */
+
+.icon {
+
+    position: absolute;
+
+    left: 13px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 40;
+
+    font-size: 15px;
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(0 0 4px rgba(0, 240, 255, 0.5));
+}
+
+
+/* =========================================================
+   PASSWORD EYE
+   ========================================================= */
+
+.eye {
+
+    position: absolute !important;
+
+    right: 5px !important;
+
+    top: 50% !important;
+
+    transform: translateY(-50%) !important;
+
+    width: 35px !important;
+
+    height: 35px !important;
+
+    padding: 0 !important;
+
+    border: none !important;
+
+    outline: none !important;
+
+    background: transparent !important;
+
+    color: #d4ffff !important;
+
+    font-size: 15px !important;
+
+    cursor: pointer !important;
+
+    box-shadow: none !important;
+
+    z-index: 40;
+
+    text-shadow:
+        0 0 6px rgba(100, 245, 255, 0.8);
+}
+
+
+.eye:hover {
+
+    color: #ffffff !important;
+
+    text-shadow:
+        0 0 8px #00eaff;
+}
+
+
+/* =========================================================
+   LOGIN BUTTON
+   ========================================================= */
+
+.login-btn {
+
+    position: absolute;
+
+    left: 17%;
+
+    top: 62%;
+
+    width: 66% !important;
+
+    height: 50px !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    border: 1px solid rgba(220, 255, 255, 0.95) !important;
+
+    border-radius: 18px !important;
+
+    outline: none !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            #e5ffff,
+            #b9eef1
+        ) !important;
+
+    color: #31575e !important;
+
+    font-family: "Segoe UI", Arial, sans-serif !important;
+
+    font-size: 17px !important;
+
+    font-weight: 500 !important;
+
+    letter-spacing: 0 !important;
+
+    text-transform: none;
+
+    cursor: pointer;
+
+    clip-path: none;
+
+    box-shadow:
+        0 0 12px rgba(190, 255, 255, 0.75),
+        0 0 25px rgba(70, 230, 255, 0.22),
+        inset 0 0 10px rgba(255, 255, 255, 0.65);
+
+    z-index: 30;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.login-btn:hover {
+
+    transform: scale(1.025);
+
+    box-shadow:
+        0 0 16px rgba(220, 255, 255, 0.95),
+        0 0 30px rgba(70, 230, 255, 0.4);
+}
+
+
+.login-btn:active {
+
+    transform: scale(0.99);
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.status {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 82%;
+
+    width: 100%;
+
+    min-height: 20px;
+
+    margin: 0;
+
+    text-align: center;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #bffcff;
+
+    text-shadow:
+        0 0 7px #00eaff;
+
+    z-index: 30;
+}
+
+
+/* =========================================================
+   HIDE DUPLICATE VIDEO-MATCHING CORNERS
+   ========================================================= */
+
+.corner {
+    display: none;
+}
+
+
+/* =========================================================
+   HUD
+   ========================================================= */
+
+.hud {
+
+    position: absolute;
+
+    z-index: 8;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: rgba(150, 240, 245, 0.55);
+
+    pointer-events: none;
+}
+
+
+.hud-left {
+
+    left: 25px;
+
+    bottom: 20px;
+}
+
+
+.hud-right {
+
+    right: 25px;
+
+    bottom: 20px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .login-panel {
+
+        left: 52%;
+
+        width: 33%;
+
+        top: 28%;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .login-panel {
+
+        left: 51%;
+
+        top: 28%;
+
+        width: 45%;
+
+        height: 43%;
+    }
+
+    .field input {
+
+        height: 36px !important;
+
+        font-size: 11px !important;
+    }
+
+    .login-btn {
+
+        height: 42px !important;
+
+        font-size: 14px !important;
+    }
+
+    .hud {
+
+        display: none;
+    }
+}
